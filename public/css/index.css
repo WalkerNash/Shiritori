@@ -3,3 +3,18 @@
     margin: 0;
     background-color: rgba(0,0,0,0.1);
   }
+
+  h1 {
+  font-family: 'HenaBoku', Arial, sans-serif;
+  font-weight:normal;
+  font-style:normal;
+  }
+
+  @font-face {
+  font-family: "HenaBoku";
+  src: url("css/fonts/Henaboku.tff");
+  src:
+  url("css/fonts/Harabara.woff") format("woff"),
+  url("css/fonts/Harabara.woff2") format("woff2"),
+  url("css/fonts/Harabara.svg#filename") format("svg");
+  }
