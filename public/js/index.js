@@ -12,7 +12,8 @@ const formInput   = document.getElementById('input').value;
 const systemText  = document.getElementById('systemText');
 const letterIcons = document.getElementsByClass('letterIcon');
 const resetti     = document.getElementById('resetBtn');
-const ul          = document.getElementById('ul')
+const ul          = document.getElementById('ul');
+const timer       = document.getElementById('timer');
 
 // class Game{
 //   constructor(wordLibrary, letterPool, currentPlayer)
@@ -22,30 +23,52 @@ const ul          = document.getElementById('ul')
 ///////////////////////////////////////////////////////////////////////////////
 //GAME FUNCTIONS//
 ///////////////////////////////////////////////////////////////////////////////
-function startGame(){
+function initGame(){
   /////////////////////////////////////////////////////////////////////////////
   //GAME DATA VARIABLES INITIALIZE//
   /////////////////////////////////////////////////////////////////////////////
-  let playerOne                 = true;
-  let wordLibrary               = [];
-  let letterPool                = [];
-  
-  header.style.background-color = '#222';
-  col1.style.background-color   = '#3c3c3c';
-  col2.style.background-color   = '#303133';
-  col3.style.background-color   = '#3c3c3c';
-  footer.style.background-color = '#222';
-  resetti.style.display         = 'none';
+  let playerState = true;
+  let wordLibrary =   [];
+  let letterPool  =   [];
+  var timeoutID;
+  var terminus    =    0;
+  var distance    = timeLimit - terminus;
+  var seconds     = Math.floor((distance % (1000 * 60)) / 1000);
 
-  while (playerOne === true){
+  systemText.innerHTML          =         'Get Ready!';
+
+
+  header.style.background-color =               '#222';
+  col1.style.background-color   =            '#3c3c3c';
+  col2.style.background-color   =            '#303133';
+  col3.style.background-color   =            '#3c3c3c';
+  footer.style.background-color =               '#222';
+  resetti.style.display         =               'none';
+
+  while (playerState === true){
     systemText.innerHTML = "Player One";
   }
-  while (playerOne === false){
+  while (playerState === false){
     systemText.innerHTML = "Player Two";
   }
   /////////////////////////////////////////////////////////////////////////////
 }
+function setTurnTimer(){
+  timeoutID = window.setTimeout(setTimeLose, 15000);
+  var countDown = setInterval(function() {
+    var timeLimit   =   15;
+    document.getElementById("timer").innerHTML = seconds;
+    if (distance = 0) {
+    clearInterval(timeLimit);
+    // document.getElementById("timer").innerHTML = "EXPIRED";
+  }
+  }, 1000);
+}
+function clearTimer() {
+  window.clearTimeout(timeoutID);
+}
 function formVerify(){
+  clearTimer();
   libraryCheck();
 }
 function libraryCheck(){
@@ -53,7 +76,7 @@ function libraryCheck(){
     if (formInput = wordLibrary[i]) {
       setWordLose();
       } else {
-        letterCheck();
+      letterCheck();
       }
       // else {}
     }
@@ -74,23 +97,19 @@ function deadEndCheck(){
     wordLibrary.push(formInput);
     letterPool.push(formInput[0]);
     ul.appendChild(formInput);
-    playerOne = !playerOne;
+    playerState = !playerState;
   }
   }
 }
-function resetAlphabet(){
+function resetLetterPool(){
   if (letterPool.length === 26) {
-    var letterPool = 0;
-    //Remove all letterPool HTML X Icons
+    var letterPool = [];
+    //Remove all letterPool  HTML X Icons
     letterIcons.style.display = 'none';
   }
 }
-
-function playerFlip(){
-  systemText.innerHTML = 'Player One';
-}
 function setWordLose(){
-  systemtext.innerHTML              = "Repeat Word, ! You Lose! Try again?";
+  systemtext.innerHTML          = "Repeat Word, ! You Lose! Try again?";
   header.style.background-color = '#efefef';
   col1.style.background-color   = '#efefef';
   col2.style.background-color   = '#efefef';
@@ -99,7 +118,7 @@ function setWordLose(){
   resetti.style.display         = 'inherit';
 }
 function setLetterLose(){
-  systemtext.innerHTML              = "Repeat Leader Letter! You Lose! Try again?";
+  systemtext.innerHTML          = "Repeat Leader Letter! You Lose! Try again?";
   header.style.background-color = '#efefef';
   col1.style.background-color   = '#efefef';
   col2.style.background-color   = '#efefef';
@@ -108,7 +127,7 @@ function setLetterLose(){
   resetti.style.display         = 'inherit';
 }
 function setDeadEndLose(){
-  systemtext.innerHTML              = "Opponent has no legal moves, You Lose! Try again?";
+  systemtext.innerHTML          = "Opponent has no legal moves, You Lose! Try again?";
   header.style.background-color = '#efefef';
   col1.style.background-color   = '#efefef';
   col2.style.background-color   = '#efefef';
@@ -117,7 +136,7 @@ function setDeadEndLose(){
   resetti.style.display         = 'inherit';
 }
 function setTimeLose(){
-  systemtext.innerHTML              = 'Out of Time! You Lose! Try again?';
+  systemtext.innerHTML          = 'Out of Time! You Lose! Try again?';
   header.style.background-color = '#efefef';
   col1.style.background-color   = '#efefef';
   col2.style.background-color   = '#efefef';
@@ -125,15 +144,7 @@ function setTimeLose(){
   footer.style.background-color = '#efefef';
   resetti.style.display         = 'inherit';
 }
-function resetGame(){
-  header.style.background-color = '#222';
-  col1.style.background-color   = '#3c3c3c';
-  col2.style.background-color   = '#303133';
-  col3.style.background-color   = '#3c3c3c';
-  footer.style.background-color = '#222';
-  resetti.style.display         = 'none';
-  let playerOne                 = true;
-}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 
@@ -141,9 +152,11 @@ function resetGame(){
 //Event Listeners
 ///////////////////////////////////////////////////////////////////////////////
 formInput.addEventListener('submit', function(){
-  libraryCheck();
-}){
-
+  formVerify();
+});
+resetti.addEventListener('click', function(){
+  initGame();
+});
 }
 ///////////////////////////////////////////////////////////////////////////////
 
