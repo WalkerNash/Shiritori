@@ -84,6 +84,10 @@
   display: grid;
 }
 
+#resetBtn {
+  display: none;
+}
+
 .col-3{
   color: white;
   background-color: #3c3c3c;
@@ -108,3 +112,8 @@
   url("css/fonts/Harabara.woff2") format("woff2"),
   url("css/fonts/Harabara.svg#filename") format("svg");
   }
+
+
+/*line-height: 
+font-size: ;
+text-aligh: center*/
