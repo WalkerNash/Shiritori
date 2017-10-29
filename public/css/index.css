@@ -26,8 +26,8 @@
 
 .container {
   display: grid;
-  grid-row-gap:    20px;
-  grid-column-gap: 20px;
+  grid-row-gap:    5px;
+  grid-column-gap: 5px;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 1fr 4fr 1fr;
 }
@@ -36,17 +36,17 @@
   color: #efefef;
   background-color: #222;
   display: grid;
-  grid-column-start: 1;
-  grid-column-end:   4;
+  grid-row-start: 2;
+  grid-row-end:   4;
 }
 
-.col-1{
+#col-1{
   color: #c10303;
   background-color: #3c3c3c;
-  display: grid;
+  /*display: grid;*/
   font-family: 'HenaBoku', Arial, sans-serif;
-  font-weight:normal;
-  font-style:normal;
+  font-weight: normal;
+  font-style: normal;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
@@ -75,20 +75,20 @@
   grid-column-end: 45;
 }
 
-.col-2{
+#col-2{
   color: #efefef;
   background-color: #303133;
   font-family: 'HenaBoku', Arial, sans-serif;
   font-weight:normal;
   font-style:normal;
-  display: grid;
+  /*display: grid;*/
 }
 
 #resetBtn {
   display: none;
 }
 
-.col-3{
+#col-3{
   color: white;
   background-color: #3c3c3c;
   font-family: 'HenaBoku', Arial, sans-serif;
@@ -99,21 +99,21 @@
 .footer {
   color: #efefef;
   background-color: #222;
-  display: grid;
+  /*display: grid;*/
   font-family: sans-serif;
 }
 /*========================================================*/
 
   @font-face {
   font-family: "HenaBoku";
-  src: url("css/fonts/Henaboku.tff");
+  src: url("/fonts/Henaboku.tff");
   src:
-  url("css/fonts/Harabara.woff") format("woff"),
-  url("css/fonts/Harabara.woff2") format("woff2"),
-  url("css/fonts/Harabara.svg#filename") format("svg");
+  url("/fonts/Harabara.woff") format("woff"),
+  url("/fonts/Harabara.woff2") format("woff2"),
+  url("/fonts/Harabara.svg#filename") format("svg");
   }
 
 
-/*line-height: 
+/*line-height:
 font-size: ;
 text-aligh: center*/

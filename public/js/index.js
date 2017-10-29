@@ -8,12 +8,22 @@ const col1        = document.getElementById('col-1');
 const col2        = document.getElementById('col-2');
 const col3        = document.getElementById('col-3');
 const footer      = document.getElementById('footer');
-const formInput   = document.getElementById('input').value;
-const systemText  = document.getElementById('systemText');
-const letterIcons = document.getElementsByClass('letterIcon');
+const formInput   = document.forms[0];
+const systemText  = document.getElementById('sysText');
+const letterIcons = document.getElementsByClassName('letterIcon');
 const resetti     = document.getElementById('resetBtn');
 const ul          = document.getElementById('ul');
 const timer       = document.getElementById('timer');
+
+var playerState, safetyState, wordLibrary, letterPool, lastLetter;
+var wordLibrary = [];
+var letterPool = [];
+var lastLetter = [];
+var timeLimit, terminus, distance, seconds;
+var timeoutID;
+var inputStr;
+var input;
+safetyState = true;
 
 // class Game{
 //   constructor(wordLibrary, letterPool, currentPlayer)
@@ -27,34 +37,43 @@ function initGame(){
   /////////////////////////////////////////////////////////////////////////////
   //GAME DATA VARIABLES INITIALIZE//
   /////////////////////////////////////////////////////////////////////////////
-  let playerState = true;
-  let wordLibrary =   [];
-  let letterPool  =   [];
-  var timeoutID;
-  var terminus    =    0;
-  var distance    = timeLimit - terminus;
-  var seconds     = Math.floor((distance % (1000 * 60)) / 1000);
+  var playerState    = true;
+  var safetyState    = true;
+  wordLibrary.length =    0;
+  letterPool.length  =    0;
+  lastLetter.length  =    0;
+  var timeLimit      =   15;
+  var terminus       =    0;
+  var distance       = timeLimit - terminus;
+  var seconds        = Math.floor((distance % (1000 * 60)) / 1000);
+  const systemText   = document.getElementById('sysText');
 
-  systemText.innerHTML          =         'Get Ready!';
 
 
-  header.style.background-color =               '#222';
-  col1.style.background-color   =            '#3c3c3c';
-  col2.style.background-color   =            '#303133';
-  col3.style.background-color   =            '#3c3c3c';
-  footer.style.background-color =               '#222';
-  resetti.style.display         =               'none';
+  systemText.innerHTML          =          'Get Ready!';
+  header.style.backgroundColor  =                '#222';
+  col1.style.backgroundColor    =             '#3c3c3c';
+  col2.style.backgroundColor    =             '#303133';
+  col3.style.backgroundColor    =             '#3c3c3c';
+  footer.style.backgroundColor  =                '#222';
+  resetti.style.display         =                'none';
 
-  while (playerState === true){
+  if (playerState === true){
     systemText.innerHTML = "Player One";
   }
-  while (playerState === false){
+  if (playerState === false){
     systemText.innerHTML = "Player Two";
   }
+  console.log("Game Init: playerState = " + playerState + ", safetyState = " + safetyState + ", wordLibrary = " + wordLibrary + ", letterPool = " + letterPool);
+  setTurnTimer();
   /////////////////////////////////////////////////////////////////////////////
 }
 function setTurnTimer(){
-  timeoutID = window.setTimeout(setTimeLose, 15000);
+  var timeLimit      =   15;
+  var terminus       =    0;
+  var distance       = timeLimit - terminus;
+  var seconds        = Math.floor((distance % (1000 * 60)) / 1000);
+  let timeoutID = window.setTimeout(setTimeLose, 15000);
   var countDown = setInterval(function() {
     var timeLimit   =   15;
     document.getElementById("timer").innerHTML = seconds;
@@ -67,40 +86,82 @@ function setTurnTimer(){
 function clearTimer() {
   window.clearTimeout(timeoutID);
 }
+
 function formVerify(){
-  clearTimer();
+  var input = formInput.name.value;
+  var inputStr = input.toString();
+  // clearTimer();
+  console.log('input :' + input);
   libraryCheck();
 }
 function libraryCheck(){
+
+  var input = formInput.name.value;
+  var inputStr = input.toString();
+
   for (let i = 0; i <= wordLibrary.length - 1; i++){
-    if (formInput = wordLibrary[i]) {
+    if (inputStr === wordLibrary[i]) {
       setWordLose();
-      } else {
-      letterCheck();
       }
       // else {}
     }
+    console.log('library passed');
+    leaderCheck();
   }
-function letterCheck(){
-  for (let i = 0; i <= letterPool.length - 1; i++){
-    if (formInput[0] = letterPool[i]){
-    setLetterLose();
+function leaderCheck(){
+
+  var input = formInput.name.value;
+  var inputStr = input.toString();
+  console.log(safetyState);
+
+  // for (let i = 0; i <= letterPool.length - 1; i++){
+  console.log(inputStr.charAt(inputStr.length -1));
+  if (safetyState === false){
+    followCheck()}
+
+  if (inputStr.charAt(0) === letterPool[0]){
+    setLeaderLose();
   } else {
+    console.log('leader passed')
     deadEndCheck();
   }
   }
-}
+function followCheck(){
+
+    var input = formInput.name.value;
+    var inputStr = input.toString();
+
+    console.log("Leader letter is: " + inputStr.charAt(0) + ', Logic is checking if the same as ' + lastLetter[0]);
+    if (inputStr.charAt(0) != lastLetter[0]){
+      setFollowLose();
+    } else {
+      console.log('follow passed')
+    }
+  }
 function deadEndCheck(){
-  if (formInput.length -1 === letterPool.length -1){
+
+  var input = formInput.name.value;
+  var inputStr = input.toString();
+
+  if (inputStr.charAt(inputStr.length - 1) === inputStr.charAt(0)){
     setDeadEndLose();
   } else {
-    wordLibrary.push(formInput);
-    letterPool.push(formInput[0]);
-    ul.appendChild(formInput);
+    console.log('dead end passed')
+    wordLibrary.push(input);
+    console.log("Library : " + wordLibrary);
+    letterPool.unshift(inputStr.charAt(0));
+    console.log("Letter Pool : " + letterPool);
+    lastLetter.unshift(inputStr.charAt(inputStr.length -1))
+    console.log("The last letter was: " + lastLetter);
+    var node = document.createElement('li');
+    var textnode = document.createTextNode(inputStr);
+    node.appendChild(textnode);
+    ul.appendChild(node);
     playerState = !playerState;
+    safetyState  = false;
+    formInput.reset();
   }
   }
-}
 function resetLetterPool(){
   if (letterPool.length === 26) {
     var letterPool = [];
@@ -109,39 +170,48 @@ function resetLetterPool(){
   }
 }
 function setWordLose(){
-  systemtext.innerHTML          = "Repeat Word, ! You Lose! Try again?";
-  header.style.background-color = '#efefef';
-  col1.style.background-color   = '#efefef';
-  col2.style.background-color   = '#efefef';
-  col3.style.background-color   = '#efefef';
-  footer.style.background-color = '#efefef';
+  systemText.innerHTML          = "Repeat Word, You Lose! Try again?";
+  header.style.backgroundColor  = '#c10303';
+  col1.style.backgroundColor    = '#c10303';
+  col2.style.backgroundColor    = '#c10303';
+  col3.style.backgroundColor    = '#c10303';
+  footer.style.backgroundColor  = '#c10303';
   resetti.style.display         = 'inherit';
 }
-function setLetterLose(){
-  systemtext.innerHTML          = "Repeat Leader Letter! You Lose! Try again?";
-  header.style.background-color = '#efefef';
-  col1.style.background-color   = '#efefef';
-  col2.style.background-color   = '#efefef';
-  col3.style.background-color   = '#efefef';
-  footer.style.background-color = '#efefef';
+function setFollowLose(){
+  systemText.innerHTML          = "You didn't follow your opponent, You Lose! Try again?";
+  header.style.backgroundColor  = '#c10303';
+  col1.style.backgroundColor    = '#c10303';
+  col2.style.backgroundColor    = '#c10303';
+  col3.style.backgroundColor    = '#c10303';
+  footer.style.backgroundColor  = '#c10303';
+  resetti.style.display         = 'inherit';
+}
+function setLeaderLose(){
+  systemText.innerHTML          = "Illegal letter, You Lose! Try again?";
+  header.style.backgroundColor  = '#c10303';
+  col1.style.backgroundColor    = '#c10303';
+  col2.style.backgroundColor    = '#c10303';
+  col3.style.backgroundColor    = '#c10303';
+  footer.style.backgroundColor  = '#c10303';
   resetti.style.display         = 'inherit';
 }
 function setDeadEndLose(){
-  systemtext.innerHTML          = "Opponent has no legal moves, You Lose! Try again?";
-  header.style.background-color = '#efefef';
-  col1.style.background-color   = '#efefef';
-  col2.style.background-color   = '#efefef';
-  col3.style.background-color   = '#efefef';
-  footer.style.background-color = '#efefef';
+  systemText.innerHTML          = "Opponent has no legal moves, You Lose! Try again?";
+  header.style.backgroundColor  = '#c10303';
+  col1.style.backgroundColor    = '#c10303';
+  col2.style.backgroundColor    = '#c10303';
+  col3.style.backgroundColor    = '#c10303';
+  footer.style.backgroundColor  = '#c10303';
   resetti.style.display         = 'inherit';
 }
 function setTimeLose(){
-  systemtext.innerHTML          = 'Out of Time! You Lose! Try again?';
-  header.style.background-color = '#efefef';
-  col1.style.background-color   = '#efefef';
-  col2.style.background-color   = '#efefef';
-  col3.style.background-color   = '#efefef';
-  footer.style.background-color = '#efefef';
+  systemText.innerHTML          = 'Out of Time! You Lose! Try again?';
+  header.style.backgroundColor  = '#c10303';
+  col1.style.backgroundColor    = '#c10303';
+  col2.style.backgroundColor    = '#c10303';
+  col3.style.backgroundColor    = '#c10303';
+  footer.style.backgroundColor  = '#c10303';
   resetti.style.display         = 'inherit';
 }
 
@@ -151,13 +221,17 @@ function setTimeLose(){
 ///////////////////////////////////////////////////////////////////////////////
 //Event Listeners
 ///////////////////////////////////////////////////////////////////////////////
-formInput.addEventListener('submit', function(){
+formInput.onsubmit = function(e) {
+  e.preventDefault();
   formVerify();
-});
+}
+// formInput.addEventListener('submit', function(){
+//
+// });
 resetti.addEventListener('click', function(){
+  safetyState = true;
   initGame();
 });
-}
 ///////////////////////////////////////////////////////////////////////////////
 
-startGame();
+initGame();
