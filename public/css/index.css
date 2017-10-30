@@ -84,6 +84,9 @@
   /*display: grid;*/
 }
 
+#input {
+  background-color: white;
+}
 #resetBtn {
   display: none;
 }
