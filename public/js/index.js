@@ -142,10 +142,10 @@ function deadEndCheck(){
     ul.appendChild(node);
     playerState = !playerState;
     if (playerState === true){
-      systemText.innerHTML = "Player One";
+      systemText.innerHTML = "Player Two";
     }
     if (playerState === false){
-      systemText.innerHTML = "Player Two";
+      systemText.innerHTML = "Player One";
     }
     safetyState  = false;
     formInput.reset();
@@ -204,7 +204,7 @@ function setDeadEndLose(){
 
 }
 function setTimeLose(){
-  systemText.innerHTML          = 'Out of Time! You Lose! Try again?';
+  systemText.innerHTML          = 'Out of Time, You Lose! Try again?';
   header.style.backgroundColor  = '#c10303';
   col1.style.backgroundColor    = '#c10303';
   col2.style.backgroundColor    = '#c10303';
@@ -233,6 +233,32 @@ resetti.addEventListener('click', function(){
   stopTimer();
   initGame();
 });
+///////////////////////////////////////////////////////////////////////////////
+
+var modal = document.querySelector('.modal')
+// var timeoutID = setTimeout(openModal, 2000)
+var xbtn = document.querySelector('.x-btn')
+// var timeoutID = setTimeout(function[], delay, param1, param2, etc...)
+
+
+var openModal = function(openModal){
+  modal.classList.remove('hide')}
+// function openModal(){
+//  }
+setTimeout(openModal, 2000)
+
+var closeModal = function(event){
+  if (event.target === xbtn || event.target === modal){
+    modal.classList.add('hide')
+  }
+}
+// function clickModal(){
+//   modal.classList.add('hide')}
+
+xbtn.addEventListener('click', closeModal)
+modal.addEventListener('click', closeModal)
+// closeModal.addEventListener('click', closeModal)
+
 ///////////////////////////////////////////////////////////////////////////////
 
 initGame();

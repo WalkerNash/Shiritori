@@ -84,6 +84,9 @@
   /*display: grid;*/
 }
 
+#input {
+  background-color: white;
+}
 #resetBtn {
   display: none;
 }
@@ -101,6 +104,59 @@
   background-color: #222;
   /*display: grid;*/
   font-family: sans-serif;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  background: rgba(0, 0, 0, 0.7);
+  animation: slideup 3s linear;
+}
+
+.modal-box {
+  height: 200px;
+  width: 500px;
+  background: white;
+  margin: 0 auto;
+  position: relative;
+  top: calc(50vh - 100px);
+  box-shadow: 0 0 50px black;
+  border-radius: 6px;
+}
+
+a.x-btn {
+  display: block;
+  float: right;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  color: black;
+  text-decoration: none;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+a.x-btn.hover {
+  color: #555;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes slideup {
+  0% {
+    opacity: 0;
+    transform: translateY(140px)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /*========================================================*/
 
