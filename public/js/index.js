@@ -204,7 +204,7 @@ function setDeadEndLose(){
 
 }
 function setTimeLose(){
-  systemText.innerHTML          = 'Out of Time! You Lose! Try again?';
+  systemText.innerHTML          = 'Out of Time, You Lose! Try again?';
   header.style.backgroundColor  = '#c10303';
   col1.style.backgroundColor    = '#c10303';
   col2.style.backgroundColor    = '#c10303';
