@@ -26,12 +26,6 @@ var count;
 var counter;
 var timeout;
 safetyState = true;
-
-// class Game{
-//   constructor(wordLibrary, letterPool, currentPlayer)
-// }
-
-
 ///////////////////////////////////////////////////////////////////////////////
 //GAME FUNCTIONS//
 ///////////////////////////////////////////////////////////////////////////////
@@ -51,8 +45,6 @@ function initGame(){
   var count;
   const systemText   = document.getElementById('sysText');
 
-
-
   systemText.innerHTML          =          'Get Ready!';
   header.style.backgroundColor  =                '#222';
   col1.style.backgroundColor    =             '#3c3c3c';
@@ -68,34 +60,11 @@ function initGame(){
   if (playerState === false){
     systemText.innerHTML = "Player Two";
   }
-  console.log("Game Init: playerState = " + playerState + ", safetyState = " + safetyState + ", wordLibrary = " + wordLibrary + ", letterPool = " + letterPool);
+  // console.log("Game Init: playerState = " + playerState + ", safetyState = " + safetyState + ", wordLibrary = " + wordLibrary + ", letterPool = " + letterPool);
   setTurnTimer();
   setDecrementTimer();
-
-  /////////////////////////////////////////////////////////////////////////////
 }
-// function setTurnTimer(){
-//   // var timeLimit      =   15;
-//   // var terminus       =    0;
-//   // var distance       = timeLimit - terminus;
-//   // var seconds        = Math.floor((distance % (1000 * 60)) / 1000);
-//   var timeoutID = window.setTimeout(setTimeLose, 15000);
-//   var count = 15;
-//   let counter = setInterval(decrementTimer, 1000);
-//
-//   function decrementTimer(){
-//     count = count - 1
-//     if (count < 0){
-//       clearInterval(counter);
-//       return;
-//     }
-//     timer.innerHTML = count;
-//   }
-// }
-// function clearTimer(){
-//   window.clearTimeout(timeoutID);
-//   // window.clearInterval(counter);
-// }
+/////////////////////////////////////////////////////////////////////////////
 function setTurnTimer() {
     timeout = setTimeout(setTimeLose, 15000);
 }
@@ -115,12 +84,9 @@ function stopTimer() {
     clearTimeout(timeout);
     clearInterval(counter);
 }
-
 function formVerify(){
   var input = formInput.name.value;
   var inputStr = input.toString();
-  // clearTimer();
-  console.log('input :' + input);
   libraryCheck();
 }
 function libraryCheck(){
@@ -132,26 +98,21 @@ function libraryCheck(){
     if (inputStr === wordLibrary[i]) {
       setWordLose();
       }
-      // else {}
     }
-    console.log('library passed');
     leaderCheck();
   }
 function leaderCheck(){
 
   var input = formInput.name.value;
   var inputStr = input.toString();
-  console.log(safetyState);
 
   // for (let i = 0; i <= letterPool.length - 1; i++){
-  console.log(inputStr.charAt(inputStr.length -1));
   if (safetyState === false){
     followCheck()}
 
   if (inputStr.charAt(0) === letterPool[0]){
     setLeaderLose();
   } else {
-    console.log('leader passed')
     deadEndCheck();
   }
   }
@@ -160,28 +121,21 @@ function followCheck(){
     var input = formInput.name.value;
     var inputStr = input.toString();
 
-    console.log("Leader letter is: " + inputStr.charAt(0) + ', Logic is checking if the same as ' + lastLetter[0]);
     if (inputStr.charAt(0) != lastLetter[0]){
       setFollowLose();
     } else {
-      console.log('follow passed')
     }
   }
 function deadEndCheck(){
 
   var input = formInput.name.value;
   var inputStr = input.toString();
-console.log(inputStr.charAt(inputStr.length -1) + inputStr.charAt(0))
   if (letterPool[0] === inputStr.charAt(inputStr.length -1)){
     setDeadEndLose();
   } else {
-    console.log('dead end passed')
     wordLibrary.push(input);
-    console.log("Library : " + wordLibrary);
     letterPool.unshift(inputStr.charAt(0));
-    console.log("Letter Pool : " + letterPool);
     lastLetter.unshift(inputStr.charAt(inputStr.length -1))
-    console.log("The last letter was: " + lastLetter);
     var node = document.createElement('li');
     var textnode = document.createTextNode(inputStr);
     node.appendChild(textnode);
@@ -276,6 +230,7 @@ formInput.onsubmit = function(e) {
 // });
 resetti.addEventListener('click', function(){
   safetyState = true;
+  stopTimer();
   initGame();
 });
 ///////////////////////////////////////////////////////////////////////////////
