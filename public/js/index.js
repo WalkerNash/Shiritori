@@ -142,10 +142,10 @@ function deadEndCheck(){
     ul.appendChild(node);
     playerState = !playerState;
     if (playerState === true){
-      systemText.innerHTML = "Player One";
+      systemText.innerHTML = "Player Two";
     }
     if (playerState === false){
-      systemText.innerHTML = "Player Two";
+      systemText.innerHTML = "Player One";
     }
     safetyState  = false;
     formInput.reset();
