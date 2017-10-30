@@ -235,4 +235,30 @@ resetti.addEventListener('click', function(){
 });
 ///////////////////////////////////////////////////////////////////////////////
 
+var modal = document.querySelector('.modal')
+// var timeoutID = setTimeout(openModal, 2000)
+var xbtn = document.querySelector('.x-btn')
+// var timeoutID = setTimeout(function[], delay, param1, param2, etc...)
+
+
+var openModal = function(openModal){
+  modal.classList.remove('hide')}
+// function openModal(){
+//  }
+setTimeout(openModal, 2000)
+
+var closeModal = function(event){
+  if (event.target === xbtn || event.target === modal){
+    modal.classList.add('hide')
+  }
+}
+// function clickModal(){
+//   modal.classList.add('hide')}
+
+xbtn.addEventListener('click', closeModal)
+modal.addEventListener('click', closeModal)
+// closeModal.addEventListener('click', closeModal)
+
+///////////////////////////////////////////////////////////////////////////////
+
 initGame();
