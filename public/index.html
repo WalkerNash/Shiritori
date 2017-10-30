@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="header">
+      <div id="header">
         <div>
           <h3>Letter Pool</h3>
         </div>
@@ -23,72 +23,71 @@
 
       <!-- ======================= -->
 
-      <div class="col-1">
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-a">A</div>
-        <div class="letter-b">B</div>
-        <div class="letter-c">C</div>
-        <div class="letter-d">D</div>
-        <div class="letter-na"></div>
-        <div class="letter-e">E</div>
-        <div class="letter-f">F</div>
-        <div class="letter-g">G</div>
-        <div class="letter-h">H</div>
-        <div class="letter-na"></div>
-        <div class="letter-i">I</div>
-        <div class="letter-j">J</div>
-        <div class="letter-k">K</div>
-        <div class="letter-l">L</div>
-        <div class="letter-na"></div>
-        <div class="letter-m">M</div>
-        <div class="letter-n">N</div>
-        <div class="letter-o">O</div>
-        <div class="letter-p">P</div>
-        <div class="letter-na"></div>
-        <div class="letter-q">Q</div>
-        <div class="letter-r">R</div>
-        <div class="letter-s">S</div>
-        <div class="letter-t">T</div>
-        <div class="letter-na"></div>
-        <div class="letter-u">U</div>
-        <div class="letter-v">V</div>
-        <div class="letter-w">W</div>
-        <div class="letter-x">X</div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-y">Y</div>
-        <div class="letter-z">Z</div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
-        <div class="letter-na"></div>
+      <div id="col-1">
+
+        <div class="c1 row-1"></div>
+
+        <div class="c1 column-1"></div>
+
+        <div class="letter a">A<a href="" class='letterIcon'></a></div>
+        <div class="letter b">B<a href="" class='letterIcon'></a></div>
+        <div class="letter c">C<a href="" class='letterIcon'></a></div>
+
+        <div class="c1 column-2"></div>
+
+        <div class="letter d">D<a href="" class='letterIcon'></a></div>
+        <div class="letter e">E<a href="" class='letterIcon'></a></div>
+        <div class="letter f">F<a href="" class='letterIcon'></a></div>
+        <div class="letter g">G<a href="" class='letterIcon'></a></div>
+        <div class="letter h">H<a href="" class='letterIcon'></a></div>
+        <div class="letter i">I<a href="" class='letterIcon'></a></div>
+        <div class="letter j">J<a href="" class='letterIcon'></a></div>
+        <div class="letter k">K<a href="" class='letterIcon'></a></div>
+        <div class="letter l">L<a href="" class='letterIcon'></a></div>
+        <div class="letter m">M<a href="" class='letterIcon'></a></div>
+        <div class="letter n">N<a href="" class='letterIcon'></a></div>
+        <div class="letter o">O<a href="" class='letterIcon'></a></div>
+        <div class="letter p">P<a href="" class='letterIcon'></a></div>
+        <div class="letter q">Q<a href="" class='letterIcon'></a></div>
+        <div class="letter r">R<a href="" class='letterIcon'></a></div>
+        <div class="letter s">S<a href="" class='letterIcon'></a></div>
+        <div class="letter t">T<a href="" class='letterIcon'></a></div>
+        <div class="letter u">U<a href="" class='letterIcon'></a></div>
+        <div class="letter v">V<a href="" class='letterIcon'></a></div>
+        <div class="letter w">W<a href="" class='letterIcon'></a></div>
+        <div class="letter x">X<a href="" class='letterIcon'></a></div>
+        <div class="letter y">Y<a href="" class='letterIcon'></a></div>
+        <div class="letter z">Z<a href="" class='letterIcon'></a></div>
+
+
+        <div class="c1 row-2"></div>
       </div>
 
       <!-- ======================= -->
 
-      <div class="col-2">
+      <div id="col-2">
+          <div><h5 id='sysText'>Player One</h5><div class="Btn" id="resetBtn">Shiritori!</div></div>
         <div class="form-box">
-          <form></form>
+          <form>
+            <input type="text" id="input"
+              name="name"
+              placeholder="Input your word here"
+              size="30"
+              minlength="3">
+            <span class="validity"></span>
+          </form>
         </div>
-        <div class='timer'></div>
-        <div></div>
+        <div id='timer'>15</div>
       </div>
 
       <!-- ======================= -->
 
-      <div class="col-3">Dynamic Ordered List Goes Here</div>
+      <div id="col-3"><ul id='ul'></ul></div>
 
       <!-- ======================= -->
 
-      <div class="footer">
-        <div> Designed &lt; Developed by Dallas Walker Peterson </div>
+      <div class="footer" id='footer'>
+        <div> Designed / Developed by Dallas Walker Peterson </div>
         <div></div>
         <div> Copyright 2017 | All Rights Reserved </div>
       </div>
