@@ -106,11 +106,11 @@
 
   @font-face {
   font-family: "HenaBoku";
-  src: url("/fonts/Henaboku.tff");
+  src: url("fonts/Henaboku.tff");
   src:
-  url("/fonts/Harabara.woff") format("woff"),
-  url("/fonts/Harabara.woff2") format("woff2"),
-  url("/fonts/Harabara.svg#filename") format("svg");
+  url("fonts/Henaboku.woff") format("woff"),
+  url("fonts/Henaboku.woff2") format("woff2"),
+  url("fonts/Henaboku.svg#filename") format("svg");
   }
 
 
