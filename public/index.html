@@ -1,132 +1,136 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shiritori</title>
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/index.css">
-  </head>
-  <body>
-    <div class="container">
-      <div id="header">
-        <div>
-          <h3>Letter Pool</h3>
-        </div>
-        <div>
-          <h1>SHIRITORI</h1>
-        </div>
-        <div>
-          <h3>Banned Words</h3>
-        </div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shiritori</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class='center'>
+        <h3>Letter Pool</h3>
       </div>
-
-      <!-- ======================= -->
-
-      <div id="col-1">
-
-        <div class="c1 row-1"></div>
-
-        <div class="c1 column-1"></div>
-
-        <div class="letter a">A<a href="" class='letterIcon'></a></div>
-        <div class="letter b">B<a href="" class='letterIcon'></a></div>
-        <div class="letter c">C<a href="" class='letterIcon'></a></div>
-
-        <div class="c1 column-2"></div>
-
-        <div class="letter d">D<a href="" class='letterIcon'></a></div>
-        <div class="letter e">E<a href="" class='letterIcon'></a></div>
-        <div class="letter f">F<a href="" class='letterIcon'></a></div>
-        <div class="letter g">G<a href="" class='letterIcon'></a></div>
-        <div class="letter h">H<a href="" class='letterIcon'></a></div>
-        <div class="letter i">I<a href="" class='letterIcon'></a></div>
-        <div class="letter j">J<a href="" class='letterIcon'></a></div>
-        <div class="letter k">K<a href="" class='letterIcon'></a></div>
-        <div class="letter l">L<a href="" class='letterIcon'></a></div>
-        <div class="letter m">M<a href="" class='letterIcon'></a></div>
-        <div class="letter n">N<a href="" class='letterIcon'></a></div>
-        <div class="letter o">O<a href="" class='letterIcon'></a></div>
-        <div class="letter p">P<a href="" class='letterIcon'></a></div>
-        <div class="letter q">Q<a href="" class='letterIcon'></a></div>
-        <div class="letter r">R<a href="" class='letterIcon'></a></div>
-        <div class="letter s">S<a href="" class='letterIcon'></a></div>
-        <div class="letter t">T<a href="" class='letterIcon'></a></div>
-        <div class="letter u">U<a href="" class='letterIcon'></a></div>
-        <div class="letter v">V<a href="" class='letterIcon'></a></div>
-        <div class="letter w">W<a href="" class='letterIcon'></a></div>
-        <div class="letter x">X<a href="" class='letterIcon'></a></div>
-        <div class="letter y">Y<a href="" class='letterIcon'></a></div>
-        <div class="letter z">Z<a href="" class='letterIcon'></a></div>
-
-
-        <div class="c1 row-2"></div>
+      <div class='center'>
+        <h1>SHIRITORI</h1>
       </div>
-
-      <!-- ======================= -->
-
-      <div id="col-2">
-          <div><h5 id='sysText'>Good Luck!</h5><div class="Btn" id="resetBtn">Shiritori!</div></div>
-        <div class="form-box">
-          <form>
-            <input type="text" id="input"
-              name="name"
-              placeholder="Input your word here"
-              size="30"
-              minlength="3">
-            <span class="validity"></span>
-          </form>
-        </div>
-        <div id='timer'>15</div>
-      </div>
-
-      <!-- ======================= -->
-
-      <div id="col-3"><ul id='ul'></ul></div>
-
-      <!-- ======================= -->
-
-      <div class="footer" id='footer'>
-        <div> Designed / Developed by Dallas Walker Peterson </div>
-        <div></div>
-        <div> Copyright 2017 | All Rights Reserved </div>
-      </div>
-    </div>
-    <!-- ======================= -->
- <!-- =========Modal Code========= -->
-    <!-- ======================= -->
-
-    <div class="modal hide">
-      <!-- modal.classList.add/remove('hidey') -->
-      <div class="modal-box">
-        <header class="modal-header">
-          <a href="#" class="x-btn">
-            <!-- Use Button Instead? -->
-            X
-          </a>
-          <article class="modal-article">
-            <!-- Content -->
-            <h1>Shiritori Rules</h1>
-          </article>
-        </header>
-        Players take turns spelling words. Only non-proper nouns may be used; use any other kind of word and it’s GAME OVER.
-
-The length of a word must be at least three letters long
-
-Repeat words aren’t allowed.
-
-Words must begin with the last letter of the word before it. Example: Apple > Echo > Otter
-
-Once a word starts with a letter, that letter can’t be used to start or end a word until the entire alphabet has been depleted, at which point the alphabet resets and players continue. You lose if you spell a word that forces your opponent to use an illegal letter. EXAMPLE: 1P: Apple > 2P: Echo > 1P: Orange - P1 loses because P2 doesn’t have a legal move (E is eliminated)
-
-Players have 15 seconds per turn to pick a word. Fail to spell a legal word in that time, and you lose!
-        <footer class="modal-footer">
-
-        </footer>
+      <div class='center'>
+        <h3>Banned Words</h3>
       </div>
     </div>
 
-    <!-- JavaScripts -->
-    <script src="js/index.js"></script>
-  </body>
+    <!-- ======================= -->
+
+    <div id="col-1">
+
+      <div class="row-1"></div>
+
+      <div class="column-1"></div>
+
+      <div class="letter a">A<a href="" class='letterIcon'></a></div>
+      <div class="letter b">B<a href="" class='letterIcon'></a></div>
+      <div class="letter c">C<a href="" class='letterIcon'></a></div>
+      <div class="letter d">D<a href="" class='letterIcon'></a></div>
+
+      <div class="column-2"></div>
+
+      <div class="letter e">E<a href="" class='letterIcon'></a></div>
+      <div class="letter f">F<a href="" class='letterIcon'></a></div>
+      <div class="letter g">G<a href="" class='letterIcon'></a></div>
+      <div class="letter h">H<a href="" class='letterIcon'></a></div>
+      <div class="letter i">I<a href="" class='letterIcon'></a></div>
+      <div class="letter j">J<a href="" class='letterIcon'></a></div>
+      <div class="letter k">K<a href="" class='letterIcon'></a></div>
+      <div class="letter l">L<a href="" class='letterIcon'></a></div>
+      <div class="letter m">M<a href="" class='letterIcon'></a></div>
+      <div class="letter n">N<a href="" class='letterIcon'></a></div>
+      <div class="letter o">O<a href="" class='letterIcon'></a></div>
+      <div class="letter p">P<a href="" class='letterIcon'></a></div>
+      <div class="letter q">Q<a href="" class='letterIcon'></a></div>
+      <div class="letter r">R<a href="" class='letterIcon'></a></div>
+      <div class="letter s">S<a href="" class='letterIcon'></a></div>
+      <div class="letter t">T<a href="" class='letterIcon'></a></div>
+      <div class="letter u">U<a href="" class='letterIcon'></a></div>
+      <div class="letter v">V<a href="" class='letterIcon'></a></div>
+      <div class="letter w">W<a href="" class='letterIcon'></a></div>
+      <div class="letter x">X<a href="" class='letterIcon'></a></div>
+
+      <div class="spacer-1"></div>
+
+      <div class="letter y">Y<a href="" class='letterIcon'></a></div>
+      <div class="letter z">Z<a href="" class='letterIcon'></a></div>
+
+      <div class="spacer-2"></div>
+
+      <div class="row-2"></div>
+    </div>
+
+    <!-- ======================= -->
+
+    <div id="col-2">
+      <div class='center'>
+        <h5 id='sysText'>Good Luck!</h5>
+        <div class="Btn" id="resetBtn">Shiritori!</div>
+      </div>
+      <div class="form-box center">
+        <form>
+          <input type="text" id="input" name="name" placeholder="Input your word here" size="30" minlength="3">
+          <span class="validity"></span>
+        </form>
+      </div>
+      <div id='timer' class="center">15</div>
+    </div>
+
+    <!-- ======================= -->
+
+    <div id="col-3">
+      <ul id='ul'></ul>
+    </div>
+
+    <!-- ======================= -->
+
+    <div class="footer">
+      <div class='center'></div>
+      <div class='center'>Designed / Developed by Dallas Walker Peterson</div>
+      <div class='center'> Copyright 2017 | All Rights Reserved </div>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- =========Modal Code========= -->
+  <!-- ============================ -->
+
+  <div class="modal hide">
+    <!-- modal.classList.add/remove('hidey') -->
+    <div class="modal-box">
+      <header class="modal-header">
+        <h1>Shiritori Rules</h1>
+        <a href="#" class="x-btn">
+          <!-- Use Button Instead? -->
+          X
+        </a>
+      </header>
+      <article class="modal-article">
+        <!-- Content -->
+        <p>Take turns spelling words. Non-proper nouns only.</p>
+        <p>Length must be at least three letters.</p>
+        <p>Repeat words aren’t allowed.</p>
+        <p>Once a letter is used to start a word, you cannot use it to start or end any other word.</p>
+        <p>Words must begin with the last letter of the previous one. Example: Apple > Echo > Otter</p>
+        <p>Players have 15 seconds per turn to pick a word. Run out of time and you lose!</p>
+      </article>
+      <footer class="modal-footer">
+      </footer>
+    </div>
+  </div>
+
+  <!-- JavaScripts -->
+  <script src="js/index.js"></script>
+</body>
+
 </html>
