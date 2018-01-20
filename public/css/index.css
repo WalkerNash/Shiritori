@@ -161,22 +161,28 @@
 }
 
 .modal-box {
-  height: 200px;
+  height: 350px;
   width: 500px;
   background: white;
   margin: 0 auto;
   position: relative;
-  top: calc(50vh - 100px);
+  top: calc(50vh - 200px);
   box-shadow: 0 0 50px black;
   border-radius: 6px;
   display: grid;
   grid-template-rows: 1fr 4fr;
-  grid-template-columns: 1fr 2fr 1fr;
 }
 
 .modal-header {
   grid-row: 1 / 2;
   grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-content: center;
+}
+
+.modal-title {
+
 }
 
 .modal-article {

@@ -248,7 +248,7 @@ var openModal = function(openModal){
 setTimeout(openModal, 2000)
 
 var closeModal = function(event){
-  if (event.target === xbtn || event.target === modal){
+  if (event.target === modal) {
     modal.classList.add('hide')
   }
 }
